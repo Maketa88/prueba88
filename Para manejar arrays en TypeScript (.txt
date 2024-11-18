@@ -1,0 +1,136 @@
+Para manejar arrays en TypeScript (y también en JavaScript), existen varias operaciones comunes como eliminar elementos, agregar elementos, leer elementos y actualizar elementos. A continuación, te explico cómo realizar cada una de estas operaciones con ejemplos prácticos:
+
+1. Eliminar Elementos de un Array
+Puedes eliminar elementos de un array utilizando métodos como splice() o filter(). Además, existe pop() para eliminar el último elemento o shift() para eliminar el primero.
+
+splice(): Permite eliminar elementos de una posición específica.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 3, 4, 5];
+numeros.splice(2, 1); // Elimina 1 elemento en la posición 2 (índice 2)
+console.log(numeros); // [1, 2, 4, 5]
+filter(): Crea un nuevo array sin los elementos que no cumplen con una condición.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 3, 4, 5];
+numeros = numeros.filter(n => n !== 3); // Elimina todos los elementos que son iguales a 3
+console.log(numeros); // [1, 2, 4, 5]
+pop(): Elimina el último elemento del array.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 3, 4, 5];
+numeros.pop(); // Elimina el último elemento
+console.log(numeros); // [1, 2, 3, 4]
+shift(): Elimina el primer elemento del array.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 3, 4, 5];
+numeros.shift(); // Elimina el primer elemento
+console.log(numeros); // [2, 3, 4, 5]
+2. Agregar Elementos a un Array
+Para agregar elementos, puedes usar métodos como push(), unshift(), o splice().
+
+push(): Agrega uno o más elementos al final del array.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 3];
+numeros.push(4, 5); // Agrega 4 y 5 al final del array
+console.log(numeros); // [1, 2, 3, 4, 5]
+unshift(): Agrega uno o más elementos al inicio del array.
+
+typescript
+Copiar código
+let numeros: number[] = [3, 4, 5];
+numeros.unshift(1, 2); // Agrega 1 y 2 al inicio del array
+console.log(numeros); // [1, 2, 3, 4, 5]
+splice(): También permite agregar elementos en una posición específica.
+
+typescript
+Copiar código
+let numeros: number[] = [1, 2, 4, 5];
+numeros.splice(2, 0, 3); // Agrega 3 en la posición 2 (índice 2)
+console.log(numeros); // [1, 2, 3, 4, 5]
+3. Leer Elementos de un Array
+Para acceder a un elemento de un array, simplemente se usa el índice correspondiente. Los índices comienzan en 0.
+
+typescript
+Copiar código
+let numeros: number[] = [10, 20, 30, 40, 50];
+console.log(numeros[2]); // 30 (Elemento en la posición 2)
+4. Actualizar Elementos de un Array
+Puedes actualizar un elemento accediendo a él por su índice y reasignándole un nuevo valor.
+
+typescript
+Copiar código
+let numeros: number[] = [10, 20, 30, 40, 50];
+numeros[2] = 35; // Cambia el elemento en la posición 2 a 35
+console.log(numeros); // [10, 20, 35, 40, 50]
+Resumen de Métodos:
+Eliminar:
+
+splice(index, count): Elimina elementos a partir de un índice.
+filter(callback): Crea un nuevo array sin los elementos que cumplen la condición.
+pop(): Elimina el último elemento.
+shift(): Elimina el primer elemento.
+Agregar:
+
+push(...elementos): Agrega elementos al final.
+unshift(...elementos): Agrega elementos al inicio.
+splice(index, 0, ...elementos): Agrega elementos en una posición específica.
+Leer:
+
+array[index]: Accede al elemento en una posición específica.
+Actualizar:
+
+array[index] = valor: Modifica un elemento del array en la posición dada.
+Con estos ejemplos y métodos, puedes manipular arrays de manera eficiente en TypeScript.
+
+NOMBRE:
+Cambio de Estado de Usuarios
+
+AUTORES:
+[Nombre del diseñador o equipo responsable]
+Ejemplo: Juan Pérez, Ana García
+
+DESCRIPCIÓN:
+Este caso de uso permite a los administradores del sistema Explococora cambiar el estado de los usuarios con roles de guías y operadores turísticos. Los estados pueden ser "ocupado", "disponible", o "inactivo", y la funcionalidad es fundamental para gestionar de manera eficiente la disponibilidad operativa de los guías y operadores turísticos en función de las necesidades del sistema y las solicitudes de los turistas.
+
+ACTORES:
+Administrador del sistema: Usuario con permisos para cambiar el estado de los guías y operadores turísticos.
+Sistema de gestión de usuarios: Componente encargado de realizar los cambios de estado en la base de datos.
+PRIORIDAD:
+Alta
+
+PRECONDICIONES:
+El administrador debe haber iniciado sesión en el sistema con los permisos necesarios.
+Los usuarios a modificar deben estar registrados en el sistema y tener los roles de guía o operador turístico.
+FLUJO NORMAL:
+El administrador accede al módulo de "Gestión de Usuarios" desde el panel principal.
+El sistema muestra una lista de usuarios con los roles de guía y operador turístico.
+El administrador selecciona un usuario (guía u operador turístico) cuyo estado desea cambiar.
+El sistema muestra la información detallada del usuario, incluyendo su estado actual (ocupado, disponible, inactivo).
+El administrador selecciona el nuevo estado que desea asignar al usuario (ocupado, disponible, inactivo).
+El administrador confirma el cambio presionando el botón "Guardar".
+El sistema valida el nuevo estado y actualiza la información del usuario en la base de datos.
+El sistema muestra un mensaje de confirmación: "El estado del usuario ha sido actualizado correctamente."
+El sistema actualiza la interfaz para reflejar el nuevo estado del usuario.
+FLUJOS ALTERNOS:
+A1. Selección de estado inválido:
+
+Si el administrador selecciona un estado no válido (por ejemplo, un estado que no corresponda a guías u operadores turísticos), el sistema muestra un mensaje de error: "Estado no válido. Por favor seleccione una opción válida."
+El administrador deberá seleccionar un estado correcto antes de proceder.
+A2. Usuario ya en el estado seleccionado:
+
+Si el administrador intenta cambiar el estado del usuario a uno en el que ya se encuentra, el sistema muestra un mensaje de advertencia: "El usuario ya se encuentra en este estado."
+El administrador podrá elegir otro estado o salir sin realizar cambios.
+POSTCONDICIÓN:
+El estado del usuario (guía u operador turístico) se actualiza en la base de datos.
+El sistema refleja el nuevo estado en la interfaz de gestión de usuarios y permite que los cambios sean visibles para otros módulos del sistema (por ejemplo, asignación de rutas).
+EXCEPCIONES:
+Si hay un problema de conexión con la base de datos, el sistema muestra un mensaje de error: "No se pudo cambiar el estado del usuario. Intente nuevamente más tarde."
+Si el administrador no tiene los permisos adecuados para realizar el cambio, el sistema muestra un mensaje de advertencia y rechaza la operación: "No tienes permiso para cambiar el estado de este usuario."
